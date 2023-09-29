@@ -11,7 +11,7 @@ export default function HomePage() {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${import.meta.env.VITE_TMDB_ACCESS_TOKEN}}`
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_ACCESS_TOKEN}`
     }
     };
 
