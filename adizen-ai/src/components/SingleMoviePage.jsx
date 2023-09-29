@@ -3,11 +3,19 @@ import {Grid,Typography,Avatar, Button} from '@mui/material'
 import { useParams,Link } from 'react-router-dom';
 import { colorTokens } from "../theme"
 import { useTheme } from '@emotion/react';
-
+import { useDispatch } from "react-redux";
+import { addFavorite } from "../features/MovieSlice";
 
 export default function SingleMoviePage() {
     const theme=useTheme();
     const colors = colorTokens(theme.palette.mode);
+
+    const dispatch = useDispatch();
+    const handleFavorite = (card) => {
+        console.log(card)
+        dispatch(addFavorite(card))
+    }
+    
 
     const {id} = useParams();
 
@@ -20,7 +28,7 @@ export default function SingleMoviePage() {
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMTZjNTQ1NjU2YjRhM2IzZGFhMTM3ODFmMzIzZmFiZCIsInN1YiI6IjY1MTY1ZGYyOWI4NjE2MDExYzQ4M2M2NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.KvPCIOChudFJjdWW52216U8VxgvYiuG92jfJh9h0oYo'
+            Authorization: `Bearer ${import.meta.env.VITE_TMDB_ACCESS_TOKEN}}`
         }
     };
 
@@ -76,10 +84,10 @@ export default function SingleMoviePage() {
                         color: colors.grey[100],
                         padding: "5px 10px",
                         }}>Watch Trailer</Button></Link>
-                        <Button  sx={{
+                        <Button size="small"  sx={{
                         color: colors.grey[100],
                         padding: "5px 10px",
-                        }}>Add To Favorites</Button>
+                        }} onClick={()=> handleFavorite(detailData)}>Add To Favorites</Button>
                     </div>
                 </div>
                 
