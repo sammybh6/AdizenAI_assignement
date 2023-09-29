@@ -5,7 +5,9 @@ import { BrowserRouter, Routes,Route } from "react-router-dom";
 import Topbar from "./components/Topbar/index";
 import Sidebar from "./components/Sidebar/index";
 import Album from "./components/utils/Album";
+import HomePage from "./components/HomePage";
 import './App.css'
+import SingleMoviePage from "./components/SingleMoviePage";
 
 function App() {
 
@@ -22,10 +24,10 @@ function App() {
                       <main className="content">
                           <Topbar />
                           <Routes>
-                              <Route path="/" element={<Album/>} />
-                              <Route path="/dashboard" element={<h1>Dashboard</h1>} />
+                              <Route path="/" element={<HomePage/>} />
+                              <Route path="/movie/:id" element={<SingleMoviePage/>} />
                               <Route path="/analytics" element={<h1>Analytics</h1>} />
-                              <Route path="/starred" element={<h1>Starred</h1>} />
+                              <Route path="/starred" element={<Album/>} />
                           </Routes>
                       </main>
                   </div>

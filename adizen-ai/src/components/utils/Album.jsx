@@ -6,16 +6,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
+import {Link} from "react-router-dom"
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Album() {
+
+
+export default function Album({cards}) {
   return (
-        <div style={{padding:"20px"}}>
+        <div style={{ margin: "0px", display: "flex", justifyContent: "center", padding: "20px" }}>
           <Grid container spacing={4}>
-            {cards.map((card) => (
+            {cards && cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={3}>
+              <Link to={`/movie/${card.id}`} style={{ textDecoration: "none" }}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
@@ -23,24 +25,32 @@ export default function Album() {
                     component="div"
                     sx={{
                       // 16:9
-                      pt: '56.25%',
+                      pt: '150%',
                     }}
-                    image="https://source.unsplash.com/random?wallpapers"
+                    image={`https://image.tmdb.org/t/p/w500${card.poster_path}`}
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {card.original_title}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                      {card.release_date}
                     </Typography>
+
+                    <div style={{display:"flex", flexDirection:"column"}}>
+
+                        <Typography>
+                            {card.overview}
+                        </Typography>
+                    </div>
+
                   </CardContent>
                   <CardActions>
                     <Button size="small">View</Button>
                     <Button size="small">Edit</Button>
                   </CardActions>
                 </Card>
+                </Link>
               </Grid>
             ))}
           </Grid>
