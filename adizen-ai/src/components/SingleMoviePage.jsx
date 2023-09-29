@@ -1,9 +1,13 @@
 import React from 'react'
 import {Grid,Typography,Avatar, Button} from '@mui/material'
 import { useParams,Link } from 'react-router-dom';
+import { colorTokens } from "../theme"
+import { useTheme } from '@emotion/react';
 
 
 export default function SingleMoviePage() {
+    const theme=useTheme();
+    const colors = colorTokens(theme.palette.mode);
 
     const {id} = useParams();
 
@@ -68,8 +72,14 @@ export default function SingleMoviePage() {
                         </Typography>
                     </div>
                     <div>
-                        <Link to={`${detailData.homepage}`}><Button>Watch Trailer</Button></Link>
-                        <Button>Add To Favorites</Button>
+                        <Link to={`${detailData.homepage}`}><Button  sx={{
+                        color: colors.grey[100],
+                        padding: "5px 10px",
+                        }}>Watch Trailer</Button></Link>
+                        <Button  sx={{
+                        color: colors.grey[100],
+                        padding: "5px 10px",
+                        }}>Add To Favorites</Button>
                     </div>
                 </div>
                 

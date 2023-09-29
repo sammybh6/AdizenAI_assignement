@@ -6,6 +6,8 @@ import Topbar from "./components/Topbar/index";
 import Sidebar from "./components/Sidebar/index";
 import Album from "./components/utils/Album";
 import HomePage from "./components/HomePage";
+import Favorites from "./components/Favorites";
+
 import './App.css'
 import SingleMoviePage from "./components/SingleMoviePage";
 
@@ -19,15 +21,15 @@ function App() {
           <ColorModeContext.Provider value={colorMode}>
               <ThemeProvider theme={theme}>
                   <CssBaseline />
-                  <div className="app">
+                  <div className="app" >
                       <Sidebar />
-                      <main className="content">
+                      <main className="content" style={{marginLeft:"90px"}}>
                           <Topbar />
                           <Routes>
                               <Route path="/" element={<HomePage/>} />
                               <Route path="/movie/:id" element={<SingleMoviePage/>} />
                               <Route path="/analytics" element={<h1>Analytics</h1>} />
-                              <Route path="/starred" element={<Album/>} />
+                              <Route path="/starred" element={<Favorites/>} />
                           </Routes>
                       </main>
                   </div>

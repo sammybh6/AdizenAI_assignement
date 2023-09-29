@@ -19,10 +19,10 @@ const Sidebar = () => {
     const [selected, setSelected] = useState("Dashboard");
 
     return (
-        <Box style={{height:"100%"}}>
+        <Box style={{height:"100%", position:"fixed", zIndex:"1000"}}>
             <ProSidebar 
                 style={{height:"100%"}}
-                defaultCollapsed={false}
+                defaultCollapsed={true}
                 rootStyles={{
                     [`.${sidebarClasses.container}`]: {
                         background: `${colors.primary[400]} !important`,
