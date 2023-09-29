@@ -8,30 +8,7 @@ import { colorTokens } from "../../theme"
 
 import { HomeOutlined, MenuOutlined } from "@mui/icons-material"
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import AnalyticsIcon from '@mui/icons-material/Analytics';
 
-// const Item = ({title, to, icon, selected, setSelected}) => {
-//     const theme = useTheme();
-//     const colors = colorTokens(theme.palette.mode);
-
-//     return (
-//         <>
-
-//             {/* <Link to={to}>
-//                 <MenuItem 
-//                     active={selected === title} 
-//                     style={{ color : colors.grey[100], backgroundColor: "transparent", padding: "10px 0px 10px 0px"}}
-//                     onClick={() => setSelected(title)}
-//                     icon={icon}
-//                     component="div"
-//                 > 
-//                     <Typography>{title}</Typography>
-//                 </MenuItem>
-//             </Link> */}
-            
-//         </>
-//     )
-// }
 
 const Sidebar = () => {
     const theme = useTheme();
@@ -42,13 +19,14 @@ const Sidebar = () => {
     const [selected, setSelected] = useState("Dashboard");
 
     return (
-        <Box >
+        <Box style={{height:"100%"}}>
             <ProSidebar 
+                style={{height:"100%"}}
                 defaultCollapsed={false}
                 rootStyles={{
                     [`.${sidebarClasses.container}`]: {
                         background: `${colors.primary[400]} !important`,
-                        height: "100vh",
+                        height: "100%",
                     },
                     [`& .${menuClasses.root}`]: {
                         padding: "5px 25px 5px 20px !important",

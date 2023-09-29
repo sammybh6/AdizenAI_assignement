@@ -1,6 +1,7 @@
 import React from 'react'
-import {Grid,Typography,Avatar} from '@mui/material'
-import { useParams } from 'react-router-dom';
+import {Grid,Typography,Avatar, Button} from '@mui/material'
+import { useParams,Link } from 'react-router-dom';
+
 
 export default function SingleMoviePage() {
 
@@ -57,12 +58,20 @@ export default function SingleMoviePage() {
                 {detailData && <img src={`https://image.tmdb.org/t/p/w300${detailData.poster_path}`} alt="" />}
             </Grid>
             <Grid item={true} md={9}>
-                <Typography variant="h1" component="h3">
-                    {detailData.original_title}
-                </Typography>
-                <Typography variant="h6" component="h6" sx={{marginBottom:"10px"}}>
-                    <i>{detailData.tagline}</i>
-                </Typography>
+                <div style={{display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
+                    <div>
+                        <Typography variant="h1" component="h3">
+                            {detailData.original_title}
+                        </Typography>
+                        <Typography variant="h6" component="h6" sx={{marginBottom:"10px"}}>
+                            <i>{detailData.tagline}</i>
+                        </Typography>
+                    </div>
+                    <div>
+                        <Link to={`${detailData.homepage}`}><Button>Watch Trailer</Button></Link>
+                        <Button>Add To Favorites</Button>
+                    </div>
+                </div>
                 
                 {detailData.genres && detailData.genres.map((genre) => (
                     <span style={{fontWeight:"bold", marginRight:"5px"}}>
@@ -87,10 +96,12 @@ export default function SingleMoviePage() {
                 </Typography>
 
                 <Typography variant="h6" component="h6" sx={{marginTop:"10px"}}>
-                    <span style={{fontWeight:"bold"}}>Production:</span> {detailData.production_companies && detailData.production_companies.map((company) => (
-                        <span style={{fontWeight:"bold", marginRight:"5px"}}>
-                            {company.name}
-                        </span>
+                    <span style={{fontWeight:"bold"}}>Rating:</span> {detailData.vote_average}
+                </Typography>
+
+                <Typography variant="h6" component="h6" sx={{marginTop:"10px"}}>
+                    <p style={{fontWeight:"bold"}}>Production: </p> {detailData.production_companies && detailData.production_companies.map((company) => (
+                           <img src={`https://image.tmdb.org/t/p/w300${company.logo_path}`} alt="" style={{height:"50px", margin:"5px"}}/>
                     ))}
                 </Typography>
             </Grid>

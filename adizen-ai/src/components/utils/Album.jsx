@@ -46,8 +46,8 @@ export default function Album({cards}) {
 
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                    <Button size="small">Add To Favorites</Button>
+                    <Link to={`/movie/${card.id}`} style={{ textDecoration: "none" }}><Button size="small">More Info</Button></Link>
                   </CardActions>
                 </Card>
                 </Link>
